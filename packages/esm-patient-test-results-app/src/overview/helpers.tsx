@@ -20,7 +20,10 @@ export const Main = ({ className = '', ...props }) => <main {...props} className
 export const RecentResultsGrid = (props) => {
   return <div {...props} className={styles['recent-results-grid']} />;
 };
-export const Card = ({ ...props }) => <div {...props} className={styles.card} />;
+export const Card = ({ ...props }) => {
+  const { normalResults = false } = props;
+  return <div {...props} className={`${styles.card} ${normalResults ? styles['normal-results'] : ''}`} />;
+};
 
 export const Separator = ({ ...props }) => <div {...props} className={styles.separator} />;
 

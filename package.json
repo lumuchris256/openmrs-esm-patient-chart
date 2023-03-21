@@ -71,6 +71,9 @@
   },
   "packageManager": "yarn@3.2.2",
   "dependencies": {
-    "@ngx-translate/core": "^14.0.0"
+    "@hookform/resolvers": "^2.9.11",
+    "@ngx-translate/core": "^14.0.0",
+    "react-hook-form": "^7.43.7",
+    "zod": "^3.21.4"
   }
 }

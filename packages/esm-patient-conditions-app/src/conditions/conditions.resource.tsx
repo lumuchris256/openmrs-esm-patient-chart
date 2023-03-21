@@ -12,7 +12,21 @@ export type Condition = {
   id: string;
 };
 
+export interface ConditionFormData {
+  condition?: string;
+  category?: string;
+  onsetDate?: string;
+  onsetDateTime?: string;
+  clinicalStatus?: string;
+  certainty?: string;
+  notes?: string;
+}
 export interface ConditionDataTableRow {
+  category: string;
+  condition: string;
+  onsetDate: string;
+  certainty: string;
+  notes: string;
   cells: Array<{
     id: string;
     value: string;

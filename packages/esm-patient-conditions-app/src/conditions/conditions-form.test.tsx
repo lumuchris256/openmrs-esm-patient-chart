@@ -245,5 +245,5 @@ describe('Conditions Form', () => {
 });
 
 function renderConditionsForm() {
-  render(<ConditionsForm {...testProps} />);
+  render(<ConditionsForm context={''} {...testProps} />);
 }

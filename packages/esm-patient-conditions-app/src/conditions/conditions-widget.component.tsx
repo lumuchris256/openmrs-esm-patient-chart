@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 import 'dayjs/plugin/utc';
@@ -24,8 +24,11 @@ import {
   ConditionDataTableRow,
   editPatientCondition,
   useConditions,
+  ConditionFormData,
 } from './conditions.resource';
 import styles from './conditions-form.scss';
+import { UseFormRegister } from 'react-hook-form';
+
 
 interface ConditionsWidgetProps {
   patientUuid: string;
@@ -34,6 +37,7 @@ interface ConditionsWidgetProps {
   submissionNotifier: BehaviorSubject<{ isSubmitting: boolean }>;
   condition?: ConditionDataTableRow;
   context?: string;
+  register: UseFormRegister<ConditionFormData>;
 }
 
 const getFieldValue = (cells, fieldName) => cells?.find((c) => c?.info?.header === fieldName)?.value;
@@ -146,7 +150,13 @@ const ConditionsWidget: React.FC<ConditionsWidgetProps> = ({
         if (response.status === 200) {
           closeWorkspace?.();
 
-          showToast({
+          const handleSubmit = React.useCallback(
+            (event: SyntheticEvent<HTMLFormElement>) => {
+              event.preventDefault();
+              submissionNotifier.next({ isSubmitting: true });
+            },
+            [submissionNotifier],
+          );showToast({
             critical: true,
             kind: 'success',
             description: t('conditionNowVisible', 'It is now visible on the Conditions page'),

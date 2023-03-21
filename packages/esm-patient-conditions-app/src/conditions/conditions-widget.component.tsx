@@ -29,6 +29,7 @@ import {
 import styles from './conditions-form.scss';
 import { UseFormRegister } from 'react-hook-form';
 
+
 interface ConditionsWidgetProps {
   patientUuid: string;
   closeWorkspace?: () => void;

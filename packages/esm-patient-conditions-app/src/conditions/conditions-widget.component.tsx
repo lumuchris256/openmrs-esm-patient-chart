@@ -156,7 +156,8 @@ const ConditionsWidget: React.FC<ConditionsWidgetProps> = ({
               submissionNotifier.next({ isSubmitting: true });
             },
             [submissionNotifier],
-          );showToast({
+          );
+          showToast({
             critical: true,
             kind: 'success',
             description: t('conditionNowVisible', 'It is now visible on the Conditions page'),
